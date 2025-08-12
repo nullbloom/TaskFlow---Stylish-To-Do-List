@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* CSS Variables for themes */
+:root {
+    --bg-gradient-light: linear-gradient(135deg, #89f7fe, #66a6ff);
+    --bg-gradient-dark: linear-gradient(135deg, #141e30, #243b55);
+
+    --container-bg-light: rgba(255 255 255 / 0.15);
+    --container-bg-dark: rgba(20 30 48 / 0.5);
+
+    --text-color-light: #fff;
+    --text-color-dark: #eee;
+
+    --button-bg-light: #ff6f91;
+    --button-bg-dark: #ffa7b3;
+
+    --button-hover-light: #ff4d6d;
+    --button-hover-dark: #ff739a;
+
+    --task-bg-light: #fff;
+    --task-bg-dark: #1e2a47;
+
+    --task-completed-color-light: gray;
+    --task-completed-color-dark: #aaa;
+}
+
+/* Body with background image */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    color: var(--text-color-light);
+    transition: background 0.5s ease, color 0.5s ease;
+    overflow: hidden;
+}
+
+/* Dark overlay on background image */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.5s ease;
+}
+
+/* Dark mode overlay change */
+body.dark::before {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.container {
+    background: var(--container-bg-light);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    padding: 25px;
+    margin: auto;
+    text-align: center;
+    transition: background 0.5s ease, color 0.5s ease;
+    position: relative;
+    top: 20px;
+}
+
+body.dark .container {
+    background: var(--container-bg-dark);
+    color: var(--text-color-dark);
+}
+
+h1 {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: inherit;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    background: var(--button-bg-light);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+    user-select: none;
+}
+
+button:hover {
+    background: var(--button-hover-light);
+}
+
+body.dark button {
+    background: var(--button-bg-dark);
+}
+
+body.dark button:hover {
+    background: var(--button-hover-dark);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    background: var(--task-bg-light);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: #222;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dark li {
+    background: var(--task-bg-dark);
+    color: #ddd;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: var(--task-completed-color-light);
+}
+
+body.dark .completed {
+    color: var(--task-completed-color-dark);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 26px;
+    background: var(--container-bg-light);
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.5s ease;
+    z-index: 10;
+}
+
+body.dark .theme-toggle {
+    background: var(--container-bg-dark);
+}
+
+.toggle-ball {
+    width: 20px;
+    height: 20px;
+    background: #ff6f91;
+    border-radius: 50%;
+    transition: transform 0.4s ease, background 0.4s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .toggle-ball {
+    background: #ffa7b3;
+    transform: translateX(24px);
+}
